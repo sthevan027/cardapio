@@ -6,7 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const itemName = button.parentElement.querySelector('h3').textContent;
             const itemPrice = button.parentElement.querySelector('.price').textContent.replace('R$ ', '').replace(',', '.');
-            
+
+            const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            pedidos.push({ nome: itemName, preco: itemPrice });
+            localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
             // Redireciona para a página de pagamento com os parâmetros do item
             window.location.href = `pagamento.html?item=${encodeURIComponent(itemName)}&preco=${itemPrice}`;
         });
