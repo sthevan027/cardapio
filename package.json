@@ -1,0 +1,8 @@
+{
+  "name": "cardapio",
+  "version": "1.0.0",
+  "description": "Cardapio online",
+  "scripts": {
+    "test": "node tests/test.js"
+  }
+}
