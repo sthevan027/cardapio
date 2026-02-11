@@ -139,6 +139,16 @@ Para adicionar novos produtos, edite o HTML seguindo a estrutura:
 5. **Checkout**: Clique em "Finalizar Pedido" para ir ao pagamento
 6. **Tema**: Clique no ícone de lua/sol para alternar o tema
 
+## 🌐 GitHub Pages (Deploy Automático)
+
+O projeto está configurado para deploy automático via GitHub Actions. Se você encontrar o erro **"Get Pages site failed"** ou **"HttpError: Not Found"**:
+
+1. **Verifique as configurações**: Acesse o repositório → **Settings** → **Pages**
+2. **Habilite o GitHub Actions**: Em "Build and deployment" → **Source**: selecione **GitHub Actions**
+3. O workflow usa `enablement: true` para habilitar Pages automaticamente quando possível
+
+Após o merge na branch `main`, o site será publicado em `https://<seu-usuario>.github.io/<repositorio>/`
+
 ## 🔧 Instalação
 
 1. Clone ou baixe o projeto
