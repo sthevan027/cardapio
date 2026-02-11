@@ -31,12 +31,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # Verifica se Pages está habilitado antes de continuar (evita erro genérico)
+      - name: Verificar configuração do GitHub Pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.pages.get({ owner: context.repo.owner, repo: context.repo.repo });
+              console.log('✓ GitHub Pages está configurado.');
+            } catch (error) {
+              if (error.status === 404) {
+                core.setFailed('GitHub Pages não está habilitado. Configure em: Settings → Pages → Build and deployment → Source → selecione "GitHub Actions". Depois execute este workflow novamente.');
+              }
+              if (error.message && error.message.includes('Resource not accessible by integration')) {
+                core.setFailed('Sem permissão para acessar GitHub Pages. Um administrador do repositório deve ir em Settings → Pages → Source → selecionar "GitHub Actions".');
+              }
+              throw error;
+            }
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          # Habilita GitHub Pages automaticamente se ainda não estiver configurado
-          # Resolve o erro "Get Pages site failed" / "HttpError: Not Found"
-          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

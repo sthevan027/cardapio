@@ -141,11 +141,18 @@ Para adicionar novos produtos, edite o HTML seguindo a estrutura:
 
 ## 🌐 GitHub Pages (Deploy Automático)
 
-O projeto está configurado para deploy automático via GitHub Actions. Se você encontrar o erro **"Get Pages site failed"** ou **"HttpError: Not Found"**:
+O projeto está configurado para deploy automático via GitHub Actions.
 
-1. **Verifique as configurações**: Acesse o repositório → **Settings** → **Pages**
-2. **Habilite o GitHub Actions**: Em "Build and deployment" → **Source**: selecione **GitHub Actions**
-3. O workflow usa `enablement: true` para habilitar Pages automaticamente quando possível
+### ⚠️ Configuração obrigatória (uma vez)
+
+O GitHub Pages **precisa ser habilitado manualmente** no repositório antes do primeiro deploy:
+
+1. Acesse o repositório no GitHub
+2. Vá em **Settings** → **Pages** (menu lateral)
+3. Em **Build and deployment** → **Source**: selecione **GitHub Actions**
+4. Salve (não é necessário configurar branch - o workflow cuida disso)
+
+Sem essa configuração, o workflow falhará com erros como "Get Pages site failed" ou "Resource not accessible by integration".
 
 Após o merge na branch `main`, o site será publicado em `https://<seu-usuario>.github.io/<repositorio>/`
 
