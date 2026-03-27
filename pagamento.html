@@ -8,228 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pagamento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .pagamento-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .resumo-pedido {
-            background: #f8f5f2;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .resumo-pedido h3 {
-            color: #2c1810;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .item-pedido {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #d4af37;
-        }
-
-        .form-pagamento {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            color: #2c1810;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #d4af37;
-        }
-
-        .cartao-info {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .btn-pagar {
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 1rem;
-        }
-
-        .btn-pagar:hover {
-            background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .voltar-btn {
-            display: inline-block;
-            color: #2c1810;
-            text-decoration: none;
-            margin-top: 1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .voltar-btn:hover {
-            color: #d4af37;
-        }
-
-        .metodos-pagamento {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .metodo-btn {
-            flex: 1;
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-weight: 500;
-        }
-
-        .metodo-btn.active {
-            border-color: #d4af37;
-            background: #f8f5f2;
-        }
-
-        .metodo-btn i {
-            font-size: 1.5rem;
-        }
-
-        .pix-container {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            background: #f8f5f2;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .pix-container.active {
-            display: block;
-        }
-
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            margin: 1rem auto;
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .codigo-pix {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .btn-copiar {
-            background: #2c1810;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-        }
-
-        .btn-copiar:hover {
-            background: #d4af37;
-        }
-
-        .instrucoes-pix {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .instrucoes-pix h4 {
-            color: #2c1810;
-            margin-bottom: 0.5rem;
-        }
-
-        .instrucoes-pix ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .instrucoes-pix li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .instrucoes-pix li i {
-            color: #d4af37;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -242,17 +22,22 @@
 
     <main>
         <div class="pagamento-container">
-            <h2><i class="fas fa-credit-card"></i> Pagamento</h2>
+            <h2><i class="fas fa-credit-card"></i> Finalizar Pedido</h2>
+            
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Pedido Realizado com Sucesso!</h3>
+                <p>Obrigado pela preferência. Seu pedido está sendo preparado.</p>
+            </div>
             
             <div class="resumo-pedido">
-                <h3>Resumo do Pedido</h3>
-                <div class="item-pedido">
-                    <span id="item-nome">X-Burger</span>
-                    <span id="item-preco">R$ 15,90</span>
+                <h3><i class="fas fa-shopping-cart"></i> Resumo do Pedido</h3>
+                <div class="cart-items-list" id="cartItemsList">
+                    <!-- Items do carrinho serão inseridos aqui -->
                 </div>
                 <div class="total">
                     <span>Total</span>
-                    <span id="total-valor">R$ 15,90</span>
+                    <span id="totalValor">R$ 0,00</span>
                 </div>
             </div>
 
@@ -287,41 +72,57 @@
                 </div>
             </div>
 
-            <form class="form-pagamento">
+            <form class="form-pagamento" id="paymentForm">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" id="customerName" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" id="customerPhone" required placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="form-group">
+                    <label>Endereço de Entrega</label>
+                    <input type="text" id="deliveryAddress" required placeholder="Rua, número, bairro, cidade">
+                </div>
+
                 <div class="form-group">
                     <label>Nome no Cartão</label>
-                    <input type="text" required placeholder="Digite o nome como está no cartão">
+                    <input type="text" id="cardName" required placeholder="Digite o nome como está no cartão">
                 </div>
 
                 <div class="form-group">
                     <label>Número do Cartão</label>
-                    <input type="text" required placeholder="1234 5678 9012 3456">
+                    <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
                 </div>
 
                 <div class="cartao-info">
                     <div class="form-group">
                         <label>Data de Validade</label>
-                        <input type="text" required placeholder="MM/AA">
+                        <input type="text" id="cardExpiry" required placeholder="MM/AA" maxlength="5">
                     </div>
                     <div class="form-group">
                         <label>CVV</label>
-                        <input type="text" required placeholder="123">
+                        <input type="text" id="cardCvv" required placeholder="123" maxlength="4">
                     </div>
                     <div class="form-group">
                         <label>Parcelas</label>
-                        <select class="form-group input">
-                            <option>1x</option>
-                            <option>2x</option>
-                            <option>3x</option>
-                            <option>4x</option>
-                            <option>5x</option>
-                            <option>6x</option>
+                        <select id="cardInstallments">
+                            <option value="1">1x sem juros</option>
+                            <option value="2">2x sem juros</option>
+                            <option value="3">3x sem juros</option>
+                            <option value="4">4x sem juros</option>
+                            <option value="5">5x sem juros</option>
+                            <option value="6">6x sem juros</option>
                         </select>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-pagar">
+                <button type="submit" class="btn-pagar" id="submitBtn">
                     <i class="fas fa-lock"></i> Finalizar Pagamento
+                    <div class="loading-spinner" id="loadingSpinner"></div>
                 </button>
 
                 <a href="index.html" class="voltar-btn">
@@ -335,53 +136,6 @@
         <p><i class="far fa-copyright"></i> 2024 Lanchonete Delícia - Todos os direitos reservados</p>
     </footer>
 
-    <script>
-        // Recupera os parâmetros da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const itemNome = urlParams.get('item');
-        const itemPreco = urlParams.get('preco');
-
-        // Atualiza o resumo do pedido
-        if (itemNome && itemPreco) {
-            document.getElementById('item-nome').textContent = itemNome;
-            document.getElementById('item-preco').textContent = `R$ ${itemPreco}`;
-            document.getElementById('total-valor').textContent = `R$ ${itemPreco}`;
-        }
-
-        // Manipula a troca de métodos de pagamento
-        const metodoBtns = document.querySelectorAll('.metodo-btn');
-        const pixContainer = document.querySelector('.pix-container');
-        const formPagamento = document.querySelector('.form-pagamento');
-
-        metodoBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                metodoBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                if (btn.dataset.metodo === 'pix') {
-                    pixContainer.classList.add('active');
-                    formPagamento.style.display = 'none';
-                } else {
-                    pixContainer.classList.remove('active');
-                    formPagamento.style.display = 'grid';
-                }
-            });
-        });
-
-        // Função para copiar o código PIX
-        function copiarCodigoPix() {
-            const codigoPix = document.getElementById('codigo-pix').textContent;
-            navigator.clipboard.writeText(codigoPix).then(() => {
-                alert('Código PIX copiado com sucesso!');
-            });
-        }
-
-        // Manipula o envio do formulário
-        document.querySelector('.form-pagamento').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Pagamento processado com sucesso! Obrigado pela preferência.');
-            window.location.href = 'index.html';
-        });
-    </script>
+    <script src="pagamento.js"></script>
 </body>
 </html> 
