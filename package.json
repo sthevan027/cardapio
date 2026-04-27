@@ -1,0 +1,12 @@
+{
+  "name": "cardapio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cardápio online estático (HTML/CSS/JS).",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "packageManager": "pnpm@10.0.0"
+}
+
