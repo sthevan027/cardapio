@@ -22,10 +22,9 @@ function loadCartData() {
         const itemPrice = urlParams.get('preco');
         
         if (itemName && itemPrice) {
-            const normalizedPrice = itemPrice.replace(',', '.');
             cartItems = [{
                 name: itemName,
-                price: parseFloat(normalizedPrice),
+                price: parseFloat(itemPrice),
                 quantity: 1,
                 id: Date.now()
             }];
