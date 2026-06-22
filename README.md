@@ -1,5 +1,9 @@
 # Cardápio Online
 
+![Status](https://img.shields.io/badge/status-estudo%2Fdesafio-blue)
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![pnpm](https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white)
+
 Este repositório contém uma versão estática de um cardápio digital. Para fazer o deploy no Netlify siga estes passos:
 
 1. Em **Build settings**, deixe o campo **Build command** vazio (não há processo de build).
